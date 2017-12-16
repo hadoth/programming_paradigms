@@ -1,0 +1,8 @@
+def arithmeticNonTail(p: (List[Int], List[Int])): List[Int] = p match {case (Nil, Nil) => Nil case (Nil, h::t) => (h/2)::arithmeticNonTail((Nil, t)) case (h::t, Nil) => (h/2)::arithmeticNonTail((t, Nil)) case (fh::ft, sh::st) => ((fh + sh) / 2)::arithmeticNonTail((ft, st))}
+
+def arithmeticTailIt(p: (List[Int], List[Int], List[Int])): List[Int] = (p._1, p._2) match {case (Nil, Nil) => p._3.reverse case (Nil, h::t) => arithmeticTailIt((Nil, t, (h/2)::p._3)) case (h::t, Nil) => arithmeticTailIt((t, Nil, (h/2)::p._3)) case (fh::ft, sh::st) => arithmeticTailIt((ft, st, ((fh + sh) / 2)::p._3))}
+
+def arithmeticTail (p: (List[Int], List[Int])): List[Int] = arithmeticTailIt((p._1, p._2, Nil))
+
+arithmeticNonTail (List(5,4,3,2),List(1,2,3,4,5,6))
+arithmeticTail (List(5,4,3,2),List(1,2,3,4,5,6))

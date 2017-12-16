@@ -1,0 +1,6 @@
+def LMerge(left: Stream[Int], right: Stream[Int]):Stream[Int] = {(left, right) match {case (Stream.Empty, Stream.Empty) => Stream.Empty case ( Stream.Empty , _) => right case (_, Stream.Empty) => left case (Stream.cons(hl, tl), Stream.cons(hr,tr)) => if (hl <= hr) Stream.cons(hl, LMerge(tl, right)) else Stream.cons(hr, LMerge(left, tr))}}
+def toStream (list: List[Int]): Stream[Int] = list match {case Nil => Stream.Empty case h::t => Stream.cons(h, (toStream(t)))}
+toStream(List(1,2,5,7,9,11))
+toStream(List(2,4,6,8))
+
+LMerge(toStream(List(1,2,5,7,9,11)), toStream(List(2,4,6,8))) toList

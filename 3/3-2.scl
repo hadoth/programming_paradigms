@@ -1,0 +1,7 @@
+def decodeOne (p:(Int, Char, List[Char])): List[Char] = if (p._1 > 0) decodeOne((p._1 - 1, p._2, p._2::p._3)) else p._3
+
+def decodeList (p:(List[(Int, Char)], List[Char])): List[Char] = p._1 match {case Nil => p._2.reverse case h::t => decodeList((t, decodeOne((h._1, h._2, p._2))))}
+
+def decode (list:List[(Int, Char)]): List[Char] = decodeList((list, Nil))
+
+decode(List((3,'a'),(4,'b'),(1,'c')))

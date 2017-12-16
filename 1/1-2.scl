@@ -1,0 +1,9 @@
+def potega (x: Int, n: Int): Int = if (n==0) 1 else x * potega (x, n-1);
+
+potega(3, 4)
+potega(2, 0)
+potega(2, 1)
+potega(2, 2)
+potega(2, 3)
+potega(2, 4)
+potega(2, 5)
