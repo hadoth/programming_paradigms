@@ -1,1 +1,0 @@
-def replicate(list:List[Int]):List[Int] = {def replicateIt(l:List[Int], a:Int, r:List[Int]):List[Int] = l match {case Nil => r case h::t => if (a > 0) replicateIt(l, a-1, h::r) else if (t!=Nil) replicateIt(t, t.head, r)  else r } (replicateIt(list, list.head, Nil)).reverse}
